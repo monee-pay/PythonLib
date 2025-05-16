@@ -12,7 +12,7 @@ class Monee:
         self.SHOP_UUID = SHOP_UUID
         self.API_URL = 'https://api.monee.pro'
 
-    def order_create(self, amount, comment, expire):
+    def order_create(self, amount, comment, expire, custom_fields=None, hook_url=None, method=None, success_url=None, subtract=None):
         """
         Documentation: https://docs.monee.pro/merchant/order/creating-order
 
@@ -20,6 +20,11 @@ class Monee:
             amount: Order amount
             comment: Order comment
             expire: Order expire
+            custom_fields: Custom fields (optional)
+            hook_url: Webhook URL (optional)
+            method: Payment method (optional)
+            success_url: Redirect URL (optional)
+            subtract: Subtract (optional)
         """
 
         api_url = self.API_URL + '/payment/create'
@@ -29,6 +34,18 @@ class Monee:
             'comment': comment,
             'expire': expire
         }
+
+        optional_params = {
+            'custom_fields': custom_fields,
+            'hook_url': hook_url,
+            'method': method,
+            'success_url': success_url,
+            'subtract': subtract
+        }
+
+        for key, value in optional_params.items():
+            if value is not None:
+                data[key] = value
 
         try:
             response = requests.post(api_url, json=data)

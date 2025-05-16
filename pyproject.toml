@@ -7,7 +7,7 @@ packages = ["src/moneepay"]
 
 [project]
 name = "moneepay"
-version = "1.0.2"
+version = "1.0.3"
 description = "Library for Python 3+ to accept payments"
 readme = "readme.md"
 authors = [{ name = "Monee", email = "support@monee.pro" }]

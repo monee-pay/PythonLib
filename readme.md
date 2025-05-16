@@ -4,7 +4,7 @@
 ---
 #### Инструкция
 ##### Установка библиотеки
-- 1.1. Выполните команду - `pip install moneepay`
+- 1.1. Выполните команду - `pip install moneepay`  
 или
 - 1.2. Скачайте исходный код - `git clone https://github.com/monee-pay/PythonLib`
 
@@ -19,7 +19,15 @@ amount = 500
 comment = 'Test'
 expire = 1500
 
-data = client.order_create(amount, comment, expire)
+data = client.order_create(amount, 
+    comment, 
+    expire, 
+    custom_fields="1337", 
+    hook_url="https://monee.pro/hook", 
+    method="card", 
+    success_url="https://monee.pro/success", 
+    subtract=0
+)
 # data = {
 #    'status': 'success', 
 #    'uuid': 'a3938999-155b-42ba-9e48-9fd0a8a8dc77', 
